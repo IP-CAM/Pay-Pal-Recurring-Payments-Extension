@@ -1,0 +1,7 @@
+3-17-2013 - Major update to allow custom cycles to recrring items. Multiple Items.
+3-19-2013 - Fixed bug in update recurring profile section
+4-1-2013 - Added ability for customers to manage their own profile in user account. Admin has control over this
+4-7-2013 - Fixed CONSTANT with people using PP-PRO and PP_RECURRING together. Fixed CHECK OUT BUG FOR TOTALS.
+4-8-1013 - FIXED DB PREFIX ISSUE.
+5-30-1013 - FIXED Issue with Trials. There was a bug in the system that counted trials.
+7-3-2013 - Enhanced Recurring Item Setup to make it easier to see.

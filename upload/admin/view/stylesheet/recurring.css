@@ -1,0 +1,130 @@
+@charset "utf-8";
+/* CSS Document */
+table.form2 {
+	width: 800px;
+	border-collapse: collapse;
+	margin-bottom: 20px;
+}
+table.form2 > tbody > tr > td:first-child {
+	width: 200px;
+}
+table.form2 > tbody > tr > td {
+	padding: 10px;
+	color: #000000;
+	border-bottom: 1px dotted #CCCCCC;
+}
+
+
+table.form3 {
+	width: 900px;
+	border-collapse: collapse;
+	margin-bottom: 20px;
+}
+table.form3 > tbody > tr > td:first-child {
+	width: 200px;
+}
+table.form3 > tbody > tr > td {
+	padding: 10px;
+	color: #000000;
+	border-bottom: 1px dotted #CCCCCC;
+}
+
+table.form4 {
+	width: 500px;
+	border-collapse: collapse;
+	margin-bottom: 20px;
+}
+table.form4 > tbody > tr > td:first-child {
+	width: 200px;
+}
+table.form4 > tbody > tr > td {
+	padding: 10px;
+	color: #000000;
+	border-bottom: 1px dotted #CCCCCC;
+}
+	  .order-list {
+	margin-bottom: 10px;
+}
+.order-list .order-id {
+	width: 49%;
+	float: left;
+	margin-bottom: 2px;
+}
+.order-list .order-status {
+	width: 49%;
+	float: right;
+	text-align: right;
+	margin-bottom: 2px;
+}
+.order-list .order-content {
+	padding: 10px 0px;
+	display: inline-block;
+	width: 100%;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #EEEEEE;
+}
+.order-list .order-content div {
+	float: left;
+	width: 33.3%;
+}
+.order-list .order-info {
+	text-align: right;
+}
+.order-list .order-status {
+	width: 49%;
+	float: right;
+	text-align: right;
+	margin-bottom: 2px;
+}
+   table.form3 {
+	width: 1000px;
+	border-collapse: collapse;
+	margin-bottom: 20px;
+}
+table.form3 > tbody > tr > td:first-child {
+	width: 200px;
+}
+table.form3 > tbody > tr > td {
+	padding: 10px;
+	color: #000000;
+	border-bottom: 1px dotted #CCCCCC;
+}
+.list tbody td a {
+	text-decoration: none;
+}
+  .order-list {
+	margin-bottom: 10px;
+}
+.order-list .order-id {
+	width: 49%;
+	float: left;
+	margin-bottom: 2px;
+}
+.order-list .order-status {
+	width: 49%;
+	float: right;
+	text-align: right;
+	margin-bottom: 2px;
+}
+.order-list .order-content {
+	padding: 10px 0px;
+	display: inline-block;
+	width: 100%;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #EEEEEE;
+}
+.order-list .order-content div {
+	float: left;
+	width: 33.3%;
+}
+.order-list .order-info {
+	text-align: right;
+}
+.order-list .order-status {
+	width: 49%;
+	float: right;
+	text-align: right;
+	margin-bottom: 2px;
+}
+
+

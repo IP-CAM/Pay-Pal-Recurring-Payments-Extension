@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Paypal Recurring Payments v1 Official Documentation</title>
+</head>
+
+<body>
+  <div style=" font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:1.3; width:900px;">
+   <h2>System Requirements</h2>
+   <p><strong>In order to use this extension you must have the following:</strong></p>
+   <ul>
+   <li>A Registered PayPal Account. If you do not have one then go here to register: <a href="https://www.paypal.com/webapps/mpp/paypal-payments-pro" target="_blank">https://www.paypal.com/webapps/mpp/paypal-payments-pro</a></li>
+   <li>PayPal Payments Pro Account + Recurring Payments Add-On. You can check out the details: <a href="https://www.paypal.com/webapps/mpp/paypal-payments-pro" target="_blank">https://www.paypal.com/webapps/mpp/paypal-payments-pro</a>. For now only Pro is offered. In the future, Pay Pal Advanced will be offered as well. We don't recommend using advanced because it uses an iFrame an looks unprofessional.</li>
+   <li>An SSL Certificate. You need to provide your customers a secure checkout since everything is done right from your Open Cart Store and "not" paypal website. Here are two articles I wrote concerning SSL and OpenCart:<ul><li><a href="http://blog.arvixe.com/opencart-how-to-configure-ssl/" target="_blank">http://blog.arvixe.com/opencart-how-to-configure-ssl/</a></li><li><a href="http://blog.arvixe.com/opencart-ssl-do-i-need-one/" target="_blank">http://blog.arvixe.com/opencart-ssl-do-i-need-one/</a></li></ul></li>
+   <li>Opencart vQmod Patching System. You can download it here: <a href="http://code.google.com/p/vqmod/" target="_blank">http://code.google.com/p/vqmod/</a></li>
+   <li>Opencart v1.5.3.0 +</li>
+    <li>Requires Individuals located in the US, UK, or CANADA. </li>
+   <li>Coming soon: Hosted Versions for: Australia, France, Hong Kong, Italy, Japan, Singapore, Spain, UK </li>
+   </ul>
+     <h2>Extension Description</h2>
+     <p>Paypal Recurring Payments is a great way to gather recurring payments from customers. Some people call them Subscription based payments. This extension gives you a very advanced way to set up the Recurring Profile and later, manage it. 
+     We've worked hard to make just about every option available to you in order to allow full integration/customizing with your customers needs. THIS IS NOT PAYPAL SUBSCRIPTIONS. I needed to clarify that because they are two very different applications. Here are just a few of the main features involving this extension:</p>
+     <ul>
+     <li>Detailed/Advanced Recurring Profile Setup</li>
+     <li>Trial Offer Setup + ability to add/edit products offered after Trial has expired.</li>
+      <li>Advanced Recurring Profile Management/Updating from Administration</li>
+       <li>No need to login to Pay Pal to mess with settings and/or manage profiles. Entering your IPN info into your Paypal Account is the extent of which you will be needing to login.</li>
+       <li>Custom Email Templates for many scenarios concerning recurring orders.</li>
+       <li>Custom Recurring Item Creation in the Catalog to make it easy to offer subscription based items.</li>
+       <li>Custom Customer Group is used for those that enroll, and when no longer enrolled are set back to default.</li>
+       <li>Advanced validation that cover all areas to ensure your profile will work once created.</li>
+       <li>Plenty of documentation and tooltips.</li>
+        <li>Even if managed from the PAY PAL side, IPN will send messages to update the OpenCart Database.</li>
+       <li>Easy install with vQmod</li>
+       <li>Advanced IPN callback platform to handle all responses sent from PayPal to Opencart concerning recurring orders</li>
+     </ul>
+     <h2>Creating A Recurring Profile</h2>
+     <p>There are MANY ways to set up a Recurring Profile and it really depends on what you are offering. Some will only be offering a monthly service where there are no physical products involved, and others will be shipping out items to their customers each week/month etc. This system allows you to set this up how you want it.
+     To give you an example on how to set this up we have chosen a very common scenario where you will be setting up a Subscription with a Trial Period at the beginning.</p>
+  
+     
+     <ul>
+    <li>First you must set up your Recurring Items by creating a product in CATALOG>PRODUCTS. This extension includes custom fields that can be found in the DATA TAB. You'll want to mark certain items as RECURRING ITEMS and certain items as TRIAL ITEMS. Trial items will normally have a recurring item tied to it as a COMBO. There is also a MAX QUANTITY field which will normally be set to one. Most subscription based offers are ONE ITEM. If someone tries to insert a product into the cart that is NOT marked as recurring then it will push the recurring item OUT of the cart. These items are unique and should be treated as such. Most won't be mixing items anyway and will only have recurring items to show to the public. Since you are offering a Trial you need to create an item that is for the Trial as well. Create your item(s) and press SAVE. You can see the items in the demo by going <a href="http://involutionmedia.com/ocedemos/index.php?route=product/category&path=59" target="_blank">HERE</a>.</li>
+     <li>Next you need to go to EXTENSIONS>PAYMENTS>PayPal Website Payment Pro (Recurring) and click on edit. Once in there you will have a variety of settings to choose from. To see the settings that are specifically for this example just login to the demo
+      username: demo password: demo and see the settings yourself. We made sure to check off TRIAL whereby activating it for the profile and we set the parameters. If you want to offer a FREE TRIAL then leave the amount at 0.00. We also specified a product that we want to offer AFTER the Trial has expired. <b>NOTE:</b> There were 4 order statuses INSERTED into the order_status table that compliment this extension which are ACTIVE, SUSPENDED, CANCELED, AND FAILED. You'll want to set your complete order status to ACTIVE and the failed order status to FAILED, or DENIED. Here are some important points when setting up the actual FLOW of a recurring profile
+   
+      <li>If you offer a trial make sure to set the regular profile start date AFTER the total trial day's have expired. For example if your Trial will run for 2 weeks you will want to set the regular start date for 14 days from the initial order.</li>
+       <li>If you offer an INITIAL AMOUNT, this will be charged to the customer card at the time of initial order. For example if you are offering a trial and you want to only charge for shipping then you will want to fill in the INITIAL AMOUNT with the shipping cost, then make the trial billing cycle amount the same for however long the trial will last.</li>
+        <li>Initial Amount Fail Action:  This is an important setting because it determines whether or not a customer's profile is created if their credit card is declined upon initial order. If you choose CONTINUE ON FAILURE then the amount owed will be billed to the next cycle. NOTE: some transactions won't even go through and they won't go past step 5 of the checkout. It all depends on the response from the merchant bank.</li>
+     
+ 
+     
+     </ul>
+     <p><strong>Other important details:</strong></p>
+     <ul>
+     <li>The recurring system is smart enough to detect certain conditions. If you create one more more Trial Items without setting up Trials in EXTENSIONS>PAYMENTS it will disallow customers to checkout with those items. </li>
+     </ul>
+      <h2>Managing A Recurring Profile</h2>
+     <p> To manage a recurring profile you simply need to go to SALES>RECURRING ORDERS and click on Manage Profile. Or, if you are in the EXTENSIONS>PAYMENTS page I added a button that says MANAGE EXISTING ORDERS. That will quick jump you there. Once in the SALES>RECURRING ORDERS you can quick jump "back" to the settings page by clicking on a button entitled EDIT RECURRING SETTINGS.
+      You are allowed to update certain criteria in the Recurring Profile + change the overall status. The input must be accurate and valid or the system will not allow it.</p>
+       <h2>Having Two PAY PAL Payment Gateways (Pay Pal Pro + Recurring)</h2>
+     <p> If you find it necessary to be running two payment gateways with PAY PAL (for example you have recurring items or regular items then the IPN URL that you installed for the recurring will also be used for the other payment procedure. Obviously this is bad, so I inserted a call back URL in the Pay Pal Pro module to go to a folder on the server. This will ensure that there is 0 conflict.</p>
+      <h2>FAQ's</h2>
+      <p><strong>If a customer wants to cancel their subscription, how will they let us know?</strong><br />
+      The customer will have to call in , OR you can use the default RMA form to allow people to request cancelation. Typically it is required to call in or fill out a form to cancel.
+      </p>
+       <p><strong>How much will Pay Pal charge me in order to use Recurring Payments?</strong><br />
+          This indeed will cost extra. It is a package that you must add on after you sign up with Pro. Check out Merchant Tools for pricing, or call Pay Pal.
+      </p>
+       <p><strong>Will this extension work with all languages I have installed on my Opencart?</strong><br />
+       All of the language files for this extension are written in English. In order to change the language you will need to do the following:
+       <ul><li>Locate all ENGLISH language files and copy them into another language folder. </li><li>Edit the text to your liking. Now when you switch languages it will show up. Otherwise, English will only show.</li></ul>
+      </p>
+      <p><strong>Will this extension work with all currencies I have installed on my Opencart?</strong><br />
+      Yes.
+      </p>
+       <p><strong>Will customers be sent to the paypal website to checkout?  </strong><br />
+     No, all transactions take place on the opencart page.
+      </p>
+       <p><strong>Does the purchase of the extension include upgrades?</strong><br />
+     Yes.
+      </p>
+      <h2>Using The Refund Manager</h2>
+      <p>This extension allows you to apply a refund to an individuals order. You can apply a refund by clicking on the Refund Manager Tab in recurring order details. </p>
+      <h2>Using Multiple Languages</h2>
+      <p>The extension comes as Enlgish but every single bit of text is part of a few language files. You are free to just duplicate the files and stick them in your own language folder. The vQmod will make sure to reference whichever language is chosen by the system settings.</p>
+      <h2>Installation Instructions</h2>
+   <p><strong>In order to successfully install the extension please follow these instructions:</strong></p>
+   <ul>
+      <li>Sign up with Paypal. Do this first. Sign up for Website Payments Pro and get the Recurring Payments PLUGIN. AFTER you do all of this, then carry on with the rest of the instructions below.</li>
+       <li>If you have not installed VQMOD for your opencart you must do this first, else the extension will not work and you will receive errors. You can download it here: <a href="http://code.google.com/p/vqmod/" target="_blank">http://code.google.com/p/vqmod/</a></li>
+      <li>If you have not installed an SSL you need to do so. Purchase a cheap SSL from your hosting company and just get it taken care of. Paypal Website Payments Pro requires it.</li>
+   <li>Unzip the extension to a location on your local drive that will not conflict with any other OpenCart files.</li>
+   <li>With FTP, upload the entire contents of the UPLOAD folder to your store location. Nothing will be over-written.</li>
+   <li>Login to your admin www.yourdomain.com/admin and navigate to EXTENSIONS>PAYMENTS>PayPal Website Payment Pro (Recurring) and click on INSTALL. When you do this, the extension will install itself along with all of the SQL queries needed to allow it to function.</li>
+   <li>Now navigate to CATALOG>PRODUCTS and set up your recurring items. If you are going to run a trial then this is where you want to set that up as well. The 3 custom fields you want to pay attention to are under the DATA TAB in product details.</li>
+   <li>Now, navigate to EXTENSIONS>PAYMENTS>PayPal Website Payment Pro (Recurring) and click EDIT. You will see many TABS of items to configure. You will want to read the information in the OFFICIAL DOCUMENTATION TAB to get a better understanding on how to use the system.</li>
+ <li>Go to the IPN CONFIGURATION, grab the IPN URL given to you and set it up within your Paypal Account. You will need to login and follow the instructions I gave you in this TAB.</li>
+ 
+</ul>
+<p><strong>Make sure to set the following statuses under the GENERAL CONFIGURATION TAB:</strong></p>
+<ul><li>Declined Transaction Status</li><li>Expired Profile Status</li><li>Order Status</li><li>Refund Status</li></ul>
+        <h2>IPN Information</h2>
+       <p>The recurring system you purchased relies heavily on IPN (instant-payment-notification) in order to keep the communication lines open between Paypal and Opencart. Without it, there is no way to receive updates to orders. You MUST login to your Paypal account and configure the IPN URL per the instructions found under the IPN CONFIGURATION TAB.</p>
+    <h2>Customer Support</h2>
+  <p><strong>For customer support please contact AVVICI at:</strong></p>
+joe@opencartvqmods.com<br />
+001-704-907-1048<br />
+Skype: involution.media
+   </div>
+</body>
+</html>
